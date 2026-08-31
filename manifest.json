@@ -1,9 +1,15 @@
 {
   "name": "D-Max Hub",
   "short_name": "D-Max",
-  "start_url": "./index.html",
+  "start_url": "/",
   "display": "standalone",
-  "background_color": "#ffffff",
-  "theme_color": "#0078D4",
-  "icons": []
+  "background_color": "#e4e4e7",
+  "theme_color": "#7c3aed",
+  "icons": [
+    {
+      "src": "icon.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    }
+  ]
 }
