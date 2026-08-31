@@ -1,0 +1,16 @@
+{
+  "name": "D-Max Hub",
+  "short_name": "D-Max",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#7c3aed",
+  "icons": [
+    {
+      "src": "https://www.google.com/s2/favicons?domain=google.com&sz=128",
+      "sizes": "128x128",
+      "type": "image/png"
+    }
+  ]
+}
+
