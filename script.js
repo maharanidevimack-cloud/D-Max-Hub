@@ -131,7 +131,7 @@ function createCardHTML(app) {
     return `${iconBoxContent}<span class="app-name">${app.name}</span>`;
 }
 
-// Initial Render with In-App Modal Viewer & Native App Switching Logic
+// Initial Render with Native Scheme Routing & Direct Website Opening
 function renderInitial() {
     if (!appGrid) return;
     appGrid.innerHTML = '';
@@ -150,12 +150,15 @@ function renderInitial() {
 
             card.addEventListener('click', (e) => {
                 e.preventDefault();
+                
                 if (app.isCustom) {
+                    alert("Mayabir AI is coming soon!");
                     return; 
                 }
 
-                let webURL = `https://${app.domain}`;
+                let targetURL = `https://${app.domain}`;
 
+                // Agar device mein App ka Native Scheme available hai toh use trigger karein
                 if (app.scheme) {
                     let fallbackTriggered = false;
                     let iframe = document.createElement('iframe');
@@ -164,10 +167,13 @@ function renderInitial() {
                     document.body.appendChild(iframe);
 
                     let timer = setTimeout(() => {
-                        document.body.removeChild(iframe);
+                        if (document.body.contains(iframe)) {
+                            document.body.removeChild(iframe);
+                        }
                         if (!fallbackTriggered) {
                             fallbackTriggered = true;
-                            openInAppModal(app.name, webURL);
+                            // Agar app install nahi hai toh direct browser mein website khulegi
+                            window.open(targetURL, '_blank');
                         }
                     }, 600);
 
@@ -179,7 +185,8 @@ function renderInitial() {
                         }
                     }, { once: true });
                 } else {
-                    openInAppModal(app.name, webURL);
+                    // Direct new tab / window open for PC and Mobile compatibility
+                    window.open(targetURL, '_blank');
                 }
             });
 
@@ -187,19 +194,6 @@ function renderInitial() {
         }
     });
     appGrid.appendChild(fragment);
-}
-
-// In-App Modal Trigger Function
-function openInAppModal(appName, url) {
-    let modal = document.getElementById('appViewerModal');
-    let titleEl = document.getElementById('viewerTitle');
-    let iframe = document.getElementById('viewerFrame');
-
-    if (modal && titleEl && iframe) {
-        titleEl.innerText = appName;
-        iframe.src = url;
-        modal.style.display = 'flex';
-    }
 }
 
 renderInitial();
@@ -233,4 +227,3 @@ window.addEventListener('appinstalled', (evt) => {
     installCount = parseInt(installCount) + 1;
     localStorage.setItem('dmax_hub_installs', installCount);
 });
-        
