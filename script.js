@@ -1,31 +1,31 @@
-// Bharat ke sabse zyada use hone wale Top 60+ Apps (No Duplicates)
+// Bharat ke sabse zyada use hone wale Top 60+ Apps (No Duplicates) with In-App Modal & Native Scheme Routing
 const localApps = [
     // Social & Communication
-    { name: "WhatsApp", domain: "whatsapp.com" },
-    { name: "Instagram", domain: "instagram.com" },
-    { name: "Facebook", domain: "facebook.com" },
-    { name: "Telegram", domain: "telegram.org" },
-    { name: "Twitter / X", domain: "twitter.com" },
-    { name: "Snapchat", domain: "snapchat.com" },
+    { name: "WhatsApp", domain: "whatsapp.com", scheme: "whatsapp://send" },
+    { name: "Instagram", domain: "instagram.com", scheme: "instagram://app" },
+    { name: "Facebook", domain: "facebook.com", scheme: "fb://facewebmodal/f?href=https://facebook.com" },
+    { name: "Telegram", domain: "telegram.org", scheme: "tg://resolve" },
+    { name: "Twitter / X", domain: "twitter.com", scheme: "twitter://timeline" },
+    { name: "Snapchat", domain: "snapchat.com", scheme: "snapchat://" },
     { name: "ShareChat", domain: "sharechat.com" },
     { name: "Josh", domain: "myjosh.in" },
     { name: "Moj", domain: "mojapp.in" },
-    { name: "LinkedIn", domain: "linkedin.com" },
-    { name: "Pinterest", domain: "pinterest.com" },
-    { name: "Discord", domain: "discord.com" },
-    { name: "Signal", domain: "signal.org" },
-    { name: "Truecaller", domain: "truecaller.com" },
+    { name: "LinkedIn", domain: "linkedin.com", scheme: "linkedin://" },
+    { name: "Pinterest", domain: "pinterest.com", scheme: "pinterest://core/feed/" },
+    { name: "Discord", domain: "discord.com", scheme: "discord://" },
+    { name: "Signal", domain: "signal.org", scheme: "sgnl://" },
+    { name: "Truecaller", domain: "truecaller.com", scheme: "truecaller://" },
 
     // Entertainment & Video
-    { name: "YouTube", domain: "youtube.com" },
-    { name: "Netflix", domain: "netflix.com" },
-    { name: "Spotify", domain: "spotify.com" },
-    { name: "Disney+ Hotstar", domain: "hotstar.com" },
+    { name: "YouTube", domain: "youtube.com", scheme: "vnd.youtube://" },
+    { name: "Netflix", domain: "netflix.com", scheme: "nflx://www.netflix.com" },
+    { name: "Spotify", domain: "spotify.com", scheme: "spotify://" },
+    { name: "Disney+ Hotstar", domain: "hotstar.com", scheme: "hotstar://" },
     { name: "JioCinema", domain: "jiocinema.com" },
     { name: "MX Player", domain: "mxplayer.in" },
     { name: "Zee5", domain: "zee5.com" },
     { name: "SonyLIV", domain: "sonyliv.com" },
-    { name: "Prime Video", domain: "primevideo.com" },
+    { name: "Prime Video", domain: "primevideo.com", scheme: "primevideo://" },
     { name: "Wynk Music", domain: "wynk.in" },
     { name: "Gaana", domain: "gaana.com" },
 
@@ -36,22 +36,22 @@ const localApps = [
     { name: "Mayabir AI", domain: "custom-ai", isCustom: true },
     { name: "Wikipedia", domain: "wikipedia.org" },
     { name: "Quora", domain: "quora.com" },
-    { name: "Reddit", domain: "reddit.com" },
+    { name: "Reddit", domain: "reddit.com", scheme: "reddit://" },
     { name: "Microsoft Copilot", domain: "copilot.microsoft.com" },
     { name: "Perplexity", domain: "perplexity.ai" },
     { name: "DeepL", domain: "deepl.com" },
 
     // UPI & Payments
-    { name: "PhonePe", domain: "phonepe.com" },
-    { name: "Google Pay", domain: "pay.google.com" },
-    { name: "Paytm", domain: "paytm.com" },
+    { name: "PhonePe", domain: "phonepe.com", scheme: "phonepe://" },
+    { name: "Google Pay", domain: "pay.google.com", scheme: "tez://" },
+    { name: "Paytm", domain: "paytm.com", scheme: "paytmmp://" },
     { name: "BHIM UPI", domain: "bhimupi.org.in" },
     { name: "Cred", domain: "cred.club" },
     { name: "MobiKwik", domain: "mobikwik.com" },
 
     // Shopping & E-Commerce
-    { name: "Amazon", domain: "amazon.in" },
-    { name: "Flipkart", domain: "flipkart.com" },
+    { name: "Amazon", domain: "amazon.in", scheme: "com.amazon.mobile.shopping://" },
+    { name: "Flipkart", domain: "flipkart.com", scheme: "flipkart://" },
     { name: "Meesho", domain: "meesho.com" },
     { name: "Myntra", domain: "myntra.com" },
     { name: "Ajio", domain: "ajio.com" },
@@ -61,19 +61,19 @@ const localApps = [
     { name: "Swiggy Instamart", domain: "swiggy.com" },
 
     // Food & Travel
-    { name: "Zomato", domain: "zomato.com" },
-    { name: "Swiggy", domain: "swiggy.com" },
+    { name: "Zomato", domain: "zomato.com", scheme: "zomato://" },
+    { name: "Swiggy", domain: "swiggy.com", scheme: "swiggy://" },
     { name: "IRCTC Rail Connect", domain: "irctc.co.in" },
     { name: "MakeMyTrip", domain: "makemytrip.com" },
     { name: "OYO", domain: "oyorooms.com" },
-    { name: "Uber", domain: "uber.com" },
-    { name: "Ola", domain: "olacabs.com" },
+    { name: "Uber", domain: "uber.com", scheme: "uber://" },
+    { name: "Ola", domain: "olacabs.com", scheme: "olacabs://" },
     { name: "Rapido", domain: "rapido.bike" },
 
     // Productivity & Utilities
-    { name: "Gmail", domain: "mail.google.com" },
+    { name: "Gmail", domain: "mail.google.com", scheme: "googlegmail://" },
     { name: "Google Drive", domain: "drive.google.com" },
-    { name: "Google Maps", domain: "maps.google.com" },
+    { name: "Google Maps", domain: "maps.google.com", scheme: "comgooglemaps://" },
     { name: "Google Translate", domain: "translate.google.com" },
     { name: "Canva", domain: "canva.com" },
     { name: "GitHub", domain: "github.com" },
@@ -109,7 +109,7 @@ if (searchWrapper && !clearBtn) {
     });
 }
 
-// Master Duplicate Tracker Set (Ensure no repeats)
+// Master Duplicate Tracker Set
 const renderedAppNames = new Set();
 
 function createCardHTML(app) {
@@ -131,7 +131,7 @@ function createCardHTML(app) {
     return `${iconBoxContent}<span class="app-name">${app.name}</span>`;
 }
 
-// Initial Render without duplicates
+// Initial Render with In-App Modal Viewer & Native App Switching Logic
 function renderInitial() {
     if (!appGrid) return;
     appGrid.innerHTML = '';
@@ -142,15 +142,64 @@ function renderInitial() {
         let cleanName = app.name.toLowerCase().trim();
         if (!renderedAppNames.has(cleanName)) {
             renderedAppNames.add(cleanName);
-            const card = document.createElement('a');
-            card.href = app.isCustom ? '#' : `https://${app.domain}`;
+            
+            const card = document.createElement('div');
             card.className = 'app-icon-card';
-            if (!app.isCustom) card.target = '_blank';
+            card.style.cursor = 'pointer';
             card.innerHTML = createCardHTML(app);
+
+            card.addEventListener('click', (e) => {
+                e.preventDefault();
+                if (app.isCustom) {
+                    return; 
+                }
+
+                let webURL = `https://${app.domain}`;
+
+                if (app.scheme) {
+                    let fallbackTriggered = false;
+                    let iframe = document.createElement('iframe');
+                    iframe.style.display = 'none';
+                    iframe.src = app.scheme;
+                    document.body.appendChild(iframe);
+
+                    let timer = setTimeout(() => {
+                        document.body.removeChild(iframe);
+                        if (!fallbackTriggered) {
+                            fallbackTriggered = true;
+                            openInAppModal(app.name, webURL);
+                        }
+                    }, 600);
+
+                    window.addEventListener('blur', () => {
+                        clearTimeout(timer);
+                        fallbackTriggered = true;
+                        if (document.body.contains(iframe)) {
+                            document.body.removeChild(iframe);
+                        }
+                    }, { once: true });
+                } else {
+                    openInAppModal(app.name, webURL);
+                }
+            });
+
             fragment.appendChild(card);
         }
     });
     appGrid.appendChild(fragment);
+}
+
+// In-App Modal Trigger Function
+function openInAppModal(appName, url) {
+    let modal = document.getElementById('appViewerModal');
+    let titleEl = document.getElementById('viewerTitle');
+    let iframe = document.getElementById('viewerFrame');
+
+    if (modal && titleEl && iframe) {
+        titleEl.innerText = appName;
+        iframe.src = url;
+        modal.style.display = 'flex';
+    }
 }
 
 renderInitial();
@@ -178,10 +227,10 @@ if (searchInput) {
     searchInput.addEventListener('input', filterApps);
 }
 
-// 3. Home Screen Install Counter System (PWA Analytics)
+// Home Screen Install Counter System (PWA Analytics)
 window.addEventListener('appinstalled', (evt) => {
     let installCount = localStorage.getItem('dmax_hub_installs') || 0;
     installCount = parseInt(installCount) + 1;
     localStorage.setItem('dmax_hub_installs', installCount);
 });
-                                                
+        
