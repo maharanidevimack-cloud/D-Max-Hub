@@ -58,6 +58,9 @@
         </div>
     </div>
 
+    <!-- Floating Side Trigger Button -->
+    <div id="side-trigger" style="position: fixed; right: 0; top: 50%; transform: translateY(-50%); background: #111; color: #fff; padding: 12px 6px; border-radius: 8px 0 0 8px; cursor: pointer; z-index: 9998; font-weight: bold; writing-mode: vertical-rl; font-family: sans-serif; box-shadow: -2px 0 10px rgba(0,0,0,0.3);">D-MAX</div>
+
     <!-- JavaScript File Link -->
     <script src="script.js"></script>
 
@@ -69,13 +72,11 @@
         document.getElementById('secretTitle').addEventListener('click', () => {
             tapCount++;
             
-            // Agar user ruk-ruk kar click karega toh 2 second mein counter reset ho jayega
             clearTimeout(resetTimer);
             resetTimer = setTimeout(() => {
                 tapCount = 0;
             }, 2000);
 
-            // 13th tap par modal khul jayega
             if (tapCount >= 13) {
                 tapCount = 0;
                 let storedCount = localStorage.getItem('dmax_hub_installs') || 0;
@@ -88,12 +89,44 @@
             document.getElementById('adminModal').style.display = 'none';
         }
 
-        // Home screen install hone par count badhane ka listener
         window.addEventListener('appinstalled', () => {
             let current = parseInt(localStorage.getItem('dmax_hub_installs') || 0) + 1;
             localStorage.setItem('dmax_hub_installs', current);
         });
+
+        // Floating Side Trigger Click Handler (Center Popup Logic)
+        document.getElementById('side-trigger').addEventListener('click', () => {
+            const hubCard = document.querySelector('.system-hub-card');
+            hubCard.style.position = 'fixed';
+            hubCard.style.top = '50%';
+            hubCard.style.left = '50%';
+            hubCard.style.transform = 'translate(-50%, -50%)';
+            hubCard.style.zIndex = '10000';
+            hubCard.style.boxShadow = '0 20px 40px rgba(0,0,0,0.4)';
+            
+            let overlay = document.getElementById('screen-overlay');
+            if(!overlay) {
+                overlay = document.createElement('div');
+                overlay.id = 'screen-overlay';
+                overlay.style.position = 'fixed';
+                overlay.style.top = '0';
+                overlay.style.left = '0';
+                overlay.style.width = '100%';
+                overlay.style.height = '100%';
+                overlay.style.background = 'rgba(0,0,0,0.4)';
+                overlay.style.zIndex = '9999';
+                document.body.appendChild(overlay);
+                
+                overlay.addEventListener('click', () => {
+                    hubCard.style.position = '';
+                    hubCard.style.top = '';
+                    hubCard.style.left = '';
+                    hubCard.style.transform = '';
+                    hubCard.style.zIndex = '';
+                    overlay.remove();
+                });
+            }
+        });
     </script>
 </body>
 </html>
-
